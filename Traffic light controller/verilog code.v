@@ -3,24 +3,24 @@
 
  module traffic_signal(
      input x,clk,reset,   
-	  output reg [7:0] main_road,county_road
+     output reg [7:0] main_road,county_road
      );
 	       localparam
 			      sr = 2'b00, //main_road- Green, county_road- Red
-					s0 = 2'b01, //main_road- Yellow, county_road- Red
-					s1 = 2'b10, //main_road- Red, county_road- Green
-					s2 = 2'b11, //main_road- Red, county_road- Yellow
+			      s0 = 2'b01, //main_road- Yellow, county_road- Red
+			      s1 = 2'b10, //main_road- Red, county_road- Green
+			      s2 = 2'b11, //main_road- Red, county_road- Yellow
 					
-					green = 8'b01000111,
-					yellow = 8'b01011001,
-					red = 8'b01010010;
+			      green = 8'b01000111,
+			      yellow = 8'b01011001,
+			      red = 8'b01010010;
 	      	  
      reg [1:0] cs,nxs; //cs - current state
 		                 //nxs - next state
 		always @ (posedge clk or posedge reset) begin
 		          if (reset) 
 					     cs <= sr;
-					else
+			  else
 					     cs <= nxs;
 		 end
 		 
